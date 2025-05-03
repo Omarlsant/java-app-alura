@@ -12,7 +12,7 @@ public class Desafio {
         System.out.println("*****************************************************");
         System.out.println("\nNombre del cliente: " + nombre);
         System.out.println("El tipo de cuenta es: " + tipoDeCuenta);
-        System.out.println("El saldo disponible es: " + saldo + "$");
+        System.out.println("El saldo disponible es: " + saldo + "€");
         System.out.println("\n*****************************************************");
 
         String menu = """
@@ -27,6 +27,33 @@ public class Desafio {
         while (opcion != 9) {
             System.out.println(menu);
             opcion = teclado.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("El saldo es: " + saldo + "€");
+                    break;
+                case 2:
+                    System.out.println("¿Cuánto deseas retirar?");
+                    double valorARetirar = teclado.nextDouble();
+                    if (valorARetirar > saldo) {
+                        System.out.println("Saldo insuficiente");
+                    } else {
+                        saldo -= valorARetirar;
+                        System.out.println("El saldo actualizado es: " + saldo + "€");
+                    }
+                    break;
+                case 3:
+                    System.out.println("¿Cuánto deseas depositar?");
+                    double valorADepositar = teclado.nextDouble();
+                    saldo += valorADepositar;
+                    System.out.println("El saldo actualizado es: " + saldo + "€");
+                    break;
+                case 9:
+                    System.out.println("Saliendo del programa, gracias por utilizar nuestro servicio");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+            }
         }
     }
 }
